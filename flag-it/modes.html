@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flag It! | Pick Your Game</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jersey+20&display=swap">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <main class="screen modes">
+        <a class="back" href="index.html" aria-label="Back to Home">‹</a>
+
+        <h1>Flag It!</h1>
+        <h2 id="game-heading">Pick Your Game!</h2>
+
+        <nav class="mode-actions" aria-labelledby="game-heading">
+            <a class="pill" href="multiple-choice.html">Multiple Choice</a>
+            <a class="pill" href="flag-reveal.html">Flag Reveal</a>
+
+            <details class="continent-picker">
+                <summary class="pill">Continent Quiz</summary>
+
+                <form class="continent-panel" method="get">
+                    <label for="continent">Pick Your Continent!</label>
+                    <select id="continent" name="continent" required>
+                        <option value="">Select a continent</option>
+                        <option>North America</option>
+                        <option>South America</option>
+                        <option>Europe</option>
+                        <option>Africa</option>
+                        <option>Asia</option>
+                        <option>Oceania</option>
+                    </select>
+
+                    <button class="pill" type="submit" formaction="multiple-choice.html">
+                        Multiple Choice
+                    </button>
+                    <button class="pill" type="submit" formaction="flag-reveal.html">
+                        Flag Reveal
+                    </button>
+                </form>
+            </details>
+        </nav>
+    </main>
+</body>
+</html>
