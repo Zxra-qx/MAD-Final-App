@@ -1,0 +1,368 @@
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family: Arial, sans-serif;
+    color: #002b65;
+
+    /* Dark background outside phone */
+    background-color: #444444;
+
+    /* Center phone layout */
+    display: flex;
+    justify-content: center;
+}
+
+
+.game-container {
+    width: 100%;
+    max-width: 390px;
+
+    /* iPhone-sized screen */
+    height: 844px;
+
+    margin: 0 auto;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: #aed8fa;
+
+    /* Cut off content outside screen */
+    overflow: hidden;
+}
+header {
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 20px 0 20px;
+}
+
+.game-title {
+    width: fit-content;
+    max-width: 100%;
+
+    margin: 0 auto;
+    padding: 12px 35px;
+
+    background-color: #a7f5c1;
+    border-radius: 50px;
+
+    font-size: 24px;
+    font-weight: bold;
+
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+.flag-section {
+    width: 100%;
+
+    margin-top: 30px;
+    padding: 65px 0 45px;
+
+    background-image: url("images/globe.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.flag-box {
+    width: 100%;
+    aspect-ratio: 2 / 1;
+
+    position: relative;
+    overflow: hidden;
+
+    background-color: #e9ffff;
+
+    border: 7px solid #a7f5c1;
+    border-radius: 22px;
+}
+
+/* Partially Hidden Flag */
+
+.flag-cover {
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 55%;
+
+    background-color: #e9ffff;
+}
+
+.guesses-container {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+
+    margin-top: 20px;
+    padding: 15px 18px;
+
+    background-color: #a7f5c1;
+    border-radius: 50px;
+}
+
+.guesses-container p {
+    margin: 0;
+
+    font-size: 16px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* Five Blue Dots */
+
+.guess-dots {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.dot {
+    width: 14px;
+    height: 14px;
+
+    flex-shrink: 0;
+
+    background-color: #2f80ed;
+    border-radius: 50%;
+}
+
+.answer-container {
+    width: 100%;
+
+    margin-top: 60px;
+    padding: 30px 25px;
+
+    background-color: #a7f5c1;
+    border-radius: 25px;
+}
+
+#guess-form {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+
+#country-guess {
+    width: 100%;
+
+    padding: 15px 20px;
+
+    background-color: #e7edf5;
+    color: #002b65;
+
+    border: 2px solid #cccccc;
+    border-radius: 50px;
+
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+
+    outline: none;
+
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+#country-guess::placeholder {
+    color: #666666;
+}
+
+#country-guess:focus {
+    border-color: #2f80ed;
+}
+
+button {
+    width: 100%;
+
+    padding: 15px;
+
+    background-color: #2f80ed;
+    color: white;
+
+    border: none;
+    border-radius: 50px;
+
+    font-family: Arial, sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background-color: #1769d2;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+#guess-feedback {
+    width: 100%;
+    margin-top: 15px;
+
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#guess-feedback:empty {
+    display: none;
+}
+
+@media (max-width: 430px) {
+
+    body {
+        background-color: #aed8fa;
+    }
+
+    .game-container {
+        max-width: 100%;
+        height: 100dvh;
+        min-height: 0;
+
+        padding: 15px 18px;
+
+        overflow-y: auto;
+    }
+
+    h1 {
+        font-size: 28px;
+        margin: 10px 0 15px;
+    }
+
+    .game-title {
+        font-size: 22px;
+        padding: 11px 30px;
+    }
+
+    .flag-section {
+        margin-top: 20px;
+        padding: 40px 0 25px;
+    }
+
+    .flag-box {
+        border-width: 6px;
+    }
+
+    .guesses-container {
+        margin-top: 12px;
+        padding: 12px 15px;
+    }
+
+    .guesses-container p {
+        font-size: 15px;
+    }
+
+    .dot {
+        width: 12px;
+        height: 12px;
+    }
+
+    .guess-dots {
+        gap: 6px;
+    }
+
+    .answer-container {
+        margin-top: 35px;
+        padding: 25px 20px;
+    }
+
+    #guess-form {
+        gap: 18px;
+    }
+
+    #country-guess {
+        padding: 13px 18px;
+    }
+
+    button {
+        padding: 13px;
+        font-size: 20px;
+    }
+}
+
+
+@media (max-width: 375px) {
+
+    .game-container {
+        padding: 12px 15px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .game-title {
+        font-size: 20px;
+    }
+
+    .flag-section {
+        margin-top: 15px;
+        padding: 25px 0 20px;
+    }
+
+    .guesses-container p {
+        font-size: 13px;
+    }
+
+    .dot {
+        width: 11px;
+        height: 11px;
+    }
+
+    .guess-dots {
+        gap: 5px;
+    }
+
+    .answer-container {
+        margin-top: 20px;
+        padding: 20px 15px;
+    }
+}
+
+
+
+@media (max-height: 750px) {
+
+    .flag-section {
+        margin-top: 10px;
+        padding-top: 20px;
+        padding-bottom: 15px;
+    }
+
+    .answer-container {
+        margin-top: 20px;
+        padding-top: 18px;
+        padding-bottom: 18px;
+    }
+}
