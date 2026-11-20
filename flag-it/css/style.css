@@ -1,3 +1,6 @@
+
+/* Global Styles */
+
 :root {
     --navy: #082553;
     --aqua: #afe3ef;
@@ -15,6 +18,14 @@ body {
     color: var(--navy);
     font-family: "Jersey 20", sans-serif;
 }
+
+:focus-visible {
+    outline: 3px solid var(--navy);
+    outline-offset: 3px;
+}
+
+
+/* Home and Game Modes */
 
 .screen.home,
 .screen.modes {
@@ -38,6 +49,9 @@ body {
     font-weight: 400;
     line-height: 1;
 }
+
+
+/* Home Screen */
 
 .home {
     padding-top: clamp(55px, 11svh, 94px);
@@ -74,6 +88,9 @@ body {
     gap: clamp(24px, 5.7svh, 50px);
 }
 
+
+/* Game Modes Screen */
+
 .modes {
     isolation: isolate;
     padding-top: clamp(58px, 8.5svh, 76px);
@@ -84,18 +101,38 @@ body {
     position: absolute;
     z-index: -1;
     inset: 0;
-    background: url("../earth.png") 46% clamp(285px, 46svh, 390px) / 165% auto no-repeat;
+    background: url("../images/earth.png") 46%
+        clamp(285px, 46svh, 390px) / 165% auto no-repeat;
     content: "";
 }
 
 .modes h2 {
-    margin: clamp(50px, 9svh, 80px) 12px clamp(32px, 6.5svh, 57px);
+    margin: clamp(50px, 9svh, 80px)
+        12px clamp(32px, 6.5svh, 57px);
 }
 
 .mode-actions {
     width: 65%;
     gap: clamp(24px, 6.5svh, 56px);
 }
+
+.modes .back {
+    position: absolute;
+    top: 28px;
+    left: 22px;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid #08255333;
+    border-radius: 50%;
+    color: inherit;
+    font-size: 26px;
+    text-decoration: none;
+}
+
+
+/* Shared Buttons */
 
 .pill {
     display: grid;
@@ -119,20 +156,8 @@ body {
     background: #98efb2;
 }
 
-.modes .back {
-    position: absolute;
-    top: 28px;
-    left: 22px;
-    display: grid;
-    place-items: center;
-    width: 44px;
-    height: 44px;
-    border: 1px solid #08255333;
-    border-radius: 50%;
-    color: inherit;
-    font-size: 26px;
-    text-decoration: none;
-}
+
+/* Continent Picker */
 
 .continent-picker summary {
     list-style: none;
@@ -172,7 +197,355 @@ body {
     font-size: 22px;
 }
 
-:focus-visible {
-    outline: 3px solid var(--navy);
-    outline-offset: 3px;
+/* Results Screen - Carl */
+
+.results-page {
+    background: #404040;
+    color: var(--navy);
+    font-family: "Jersey 20", sans-serif;
+}
+
+.results-app {
+    width: 100%;
+    max-width: 391px;
+    min-height: 100vh;
+    min-height: 100svh;
+    margin: 0 auto;
+    padding: 18px 20px 30px;
+    background: #b9d7f7;
+}
+
+
+/* Results Header */
+
+.results-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.results-header h1 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.back-link {
+    color: #233d70;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+.results-header span {
+    width: 20px;
+}
+
+
+/* Results Content */
+
+.results-content {
+    padding-top: 20px;
+    text-align: center;
+}
+
+.results-badge {
+    display: inline-block;
+    padding: 8px 24px;
+    border-radius: 20px;
+    background: var(--mint);
+    color: #233d70;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.results-content h2 {
+    margin-bottom: 5px;
+    font-size: 26px;
+}
+
+.results-content > p {
+    font-size: 14px;
+}
+
+
+/* Globe Image */
+
+.results-globe {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.results-globe img {
+    display: block;
+    width: 100%;
+    max-width: 230px;
+    height: auto;
+}
+
+
+/* Final Score Card */
+
+.score-card {
+    margin-bottom: 15px;
+    padding: 16px;
+    border: 2px solid var(--mint);
+    border-radius: 16px;
+    background: #ddf6df;
+}
+
+.score-card h3 {
+    margin: 0;
+    font-size: 14px;
+}
+
+.results-score {
+    margin: 10px 0;
+    font-size: 42px;
+    font-weight: bold;
+}
+
+.score-card p:last-child {
+    margin: 0;
+    font-size: 13px;
+}
+
+
+/* Correct and Incorrect Summary */
+
+.results-summary {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.correct-box,
+.incorrect-box {
+    flex: 1;
+    min-width: 0;
+    padding: 14px 5px;
+    border-radius: 12px;
+    font-size: 13px;
+}
+
+.correct-box {
+    background: var(--mint);
+    color: #267449;
+}
+
+.incorrect-box {
+    background: #e9dce1;
+    color: #a04455;
+}
+
+
+/* Answer Summary */
+
+.answer-summary {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.answer-summary h3 {
+    margin-bottom: 12px;
+    font-size: 17px;
+}
+
+.answer-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 8px;
+    padding: 12px;
+    border-radius: 8px;
+    background: #e6f3ff;
+    font-size: 14px;
+}
+
+.correct {
+    color: #267449;
+    font-weight: bold;
+}
+
+.incorrect {
+    color: #a04455;
+    font-weight: bold;
+}
+
+
+/* Results Buttons */
+
+.results-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.results-button {
+    display: block;
+    padding: 14px;
+    border-radius: 25px;
+    background: var(--mint);
+    color: #233d70;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+}
+
+.results-button:hover {
+    background: #98efb2;
+}
+
+
+/* Flag Reveal Navigation */
+
+.results-link {
+    display: block;
+    max-width: 250px;
+    margin: 16px auto;
+    padding: 12px 20px;
+    border-radius: 25px;
+    background: var(--mint);
+    color: #233d70;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+}
+
+.results-link:hover {
+    background: #98efb2;
+}
+
+
+/* Results Mobile Styles */
+
+@media (max-width: 430px) {
+
+    .results-app {
+        padding: 10px 16px 20px;
+    }
+
+    .results-content {
+        padding-top: 5px;
+    }
+
+    .results-badge {
+        margin: 8px 0;
+        padding: 6px 18px;
+        font-size: 12px;
+    }
+
+    .results-content h2 {
+        margin: 8px 0 4px;
+        font-size: 22px;
+    }
+
+    .results-content > p {
+        margin: 6px 0;
+    }
+
+    .results-globe {
+        margin: 4px 0;
+    }
+
+    .results-globe img {
+        max-width: 125px;
+    }
+
+    .score-card {
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+
+    .score-card h3 {
+        font-size: 13px;
+    }
+
+    .results-score {
+        margin: 4px 0;
+        font-size: 32px;
+    }
+
+    .results-summary {
+        gap: 8px;
+        margin-bottom: 10px;
+    }
+
+    .correct-box,
+    .incorrect-box {
+        padding: 10px 4px;
+        font-size: 12px;
+    }
+
+    .answer-summary {
+        margin-bottom: 12px;
+    }
+
+    .answer-summary h3 {
+        margin: 0 0 8px;
+        font-size: 15px;
+    }
+
+    .answer-row {
+        margin-bottom: 5px;
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
+    .results-actions {
+        gap: 8px;
+    }
+
+    .results-button {
+        padding: 11px;
+        font-size: 14px;
+    }
+}
+
+/* Results Font Sizes */
+
+.results-header h1 {
+    font-size: 32px;
+}
+
+.results-badge {
+    font-size: 20px;
+}
+
+.results-content h2 {
+    font-size: 38px;
+}
+
+.results-content > p {
+    font-size: 22px;
+}
+
+.score-card h3 {
+    font-size: 24px;
+}
+
+.results-score {
+    font-size: 48px;
+}
+
+.score-card p:last-child {
+    font-size: 20px;
+}
+
+.correct-box,
+.incorrect-box {
+    font-size: 20px;
+}
+
+.answer-summary h3 {
+    font-size: 26px;
+}
+
+.answer-row {
+    font-size: 20px;
+}
+
+.results-button {
+    font-size: 26px;
 }
