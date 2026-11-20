@@ -229,11 +229,35 @@ body {
     font-size: 18px;
 }
 
+
+
+/* Results Back Button */
+
 .back-link {
-    color: #233d70;
-    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 55px;
+    height: 55px;
+
+    background-color: transparent;
+    border: 2px solid transparent;
+    border-radius: 50%;
+
+    color: #082553;
+    font-size: 32px;
+    font-weight: bold;
     text-decoration: none;
+
+    flex-shrink: 0;
 }
+
+.back-link:hover {
+    background-color: #aaf5c0;
+    border-color: #80cfa1;
+}
+
 
 .results-header span {
     width: 20px;
