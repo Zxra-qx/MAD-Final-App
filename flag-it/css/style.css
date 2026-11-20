@@ -260,7 +260,8 @@ body {
 
 
 .results-header span {
-    width: 20px;
+    width: 55px;
+    flex-shrink: 0;
 }
 
 
