@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Flag It! - Flag Reveal</title>
+
+    <link rel="stylesheet" href="flag-reveal.css">
+</head>
+
+<body>
+
+    <main class="game-container">
+
+        <!-- Game Title -->
+        <header>
+            <h1>Flag It!</h1>
+            <h2 class="game-title">Flag Reveal</h2>
+        </header>
+
+        <!-- Flag Display -->
+        <section class="flag-section">
+
+            <div class="flag-box"></div>
+
+        </section>
+
+        <!-- Remaining Guesses -->
+        <section class="guesses-container">
+
+            <p>
+                Guesses Left:
+                <span id="guesses-left">5</span>
+            </p>
+
+            <div class="guess-dots">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+
+        </section>
+
+        <!-- Guess Input -->
+        <section class="answer-container">
+
+            <form id="guess-form">
+
+                <input
+                    type="text"
+                    id="country-guess"
+                    name="country"
+                    placeholder="Type your answer..."
+                    aria-label="Country guess"
+                    required
+                >
+
+                <button type="submit">
+                    SUBMIT
+                </button>
+
+            </form>
+
+        </section>
+
+        <p id="guess-feedback" aria-live="polite"></p>
+
+    </main>
+
+</body>
+</html>
