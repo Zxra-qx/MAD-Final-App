@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flag It! | Multiple Choice</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jersey+20&display=swap">
+    <link rel="stylesheet" href="css/multiple-choice.css">
+    <script src="multiple-choice.js"></script>
+</head>
+
+<body>
+    <main class="game-container">
+        <a class="back" href="modes.html" aria-label="Back to game modes">‹</a>
+
+        <header class="game-header">
+            <h1>Flag It!</h1>
+            <div class="game-info">
+                <p>Score: <span>7</span></p>
+                <p>Question 10/10</p>
+            </div>
+            <h2 class="game-label">Guess the Flag!</h2>
+        </header>
+
+        <section class="flag-container" aria-label="Flag question">
+            <img
+                src="earth.png"
+                alt=""
+                class="earth"
+                aria-hidden="true"
+            >
+
+            <img
+                src="japan.png"
+                alt="Flag of Japan"
+                class="japan"
+            >
+        </section>
+
+        <section class="answers" aria-label="Answer choices">
+            <button class="answer-button" type="button">Canada</button>
+            <button class="answer-button" type="button">Korea</button>
+            <button class="answer-button" type="button">Philippines</button>
+            <button class="answer-button" type="button">Japan</button>
+        </section>
+
+        <p id="feedback"></p>
+
+        <button id="next-button" class="next-button">
+            Next Question
+        </button>
+    </main>
+    <script>
+        const correctAnswer = "Japan";
+
+        const answerButtons = document.querySelectorAll(".answer-button");
+        const feedback = document.getElementById("feedback");
+        const nextButton = document.getElementById("next-button");
+
+        answerButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                const selectedAnswer = button.textContent.trim();
+                if(selectedAnswer === correctAnswer){
+                    feedback.textContent = "Correct!"
+                    feedback.className = "correct";
+                } else {
+                    feedback.textContent =
+                        "Incorrect. The correct answer is Japan";
+                    feedback.className = "incorrect";
+                }
+
+                answerButtons.forEach((btn) => {
+                    btn.disabled = true
+                });
+                nextButton.style.display = "block";
+            });
+        });
+
+        nextButton.addEventListener("click", () => {
+            window.location.href = "results.html"
+        });
+    </script>
+    </body>
+</html>
