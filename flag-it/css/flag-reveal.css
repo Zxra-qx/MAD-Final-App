@@ -437,3 +437,24 @@ button:active {
         padding-bottom: 18px;
     }
 }
+
+.results-link {
+    display: block;
+    margin-top: 20px;
+    padding: 12px 35px;
+
+    background-color: #2f80ed;
+    color: white;
+
+    border-radius: 50px;
+    text-align: center;
+    text-decoration: none;
+
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.results-link:hover {
+    background-color: #1769d2;
+}
+
