@@ -1,34 +1,382 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Flag It! - Flag Reveal</title>
 
-    <link rel="stylesheet" href="css/flag-reveal.css">
+    <style>
+
+        /* GENERAL STYLING */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #444444;
+            font-family: Arial, sans-serif;
+            color: #002b65;
+
+            display: flex;
+            justify-content: center;
+        }
+
+        /* IPHONE SCREEN */
+
+        .game-container {
+            width: 100%;
+            max-width: 390px;
+            min-height: 844px;
+
+            padding: 20px;
+
+            background-color: #aed8fa;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* BACK BUTTON */
+
+        .back {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+
+            color: #002b65;
+            font-size: 32px;
+            text-decoration: none;
+        }
+
+        /* HEADER */
+
+        header {
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 30px;
+            margin: 20px 0 20px;
+        }
+
+        .game-title {
+            display: inline-block;
+
+            background-color: #a7f5c1;
+            border-radius: 50px;
+
+            padding: 12px 40px;
+            margin: 0;
+
+            font-size: 24px;
+
+            box-shadow: 0 4px 5px rgba(0,0,0,0.2);
+        }
+
+        /* FLAG SECTION */
+
+        .flag-section {
+            width: 100%;
+            margin-top: 35px;
+
+            padding: 65px 0 40px;
+
+            background-image: url("images/globe.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        .flag-box {
+            width: 100%;
+            aspect-ratio: 2 / 1;
+
+            position: relative;
+            overflow: hidden;
+
+            background-color: #e9ffff;
+
+            border: 7px solid #a7f5c1;
+            border-radius: 22px;
+        }
+
+        .flag-image {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* HIDE PART OF FLAG */
+
+        .flag-cover {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+
+            width: 100%;
+            height: 55%;
+
+            background-color: #e9ffff;
+        }
+
+        /* GUESSES LEFT */
+
+        .guesses-container {
+            width: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            background-color: #a7f5c1;
+            border-radius: 50px;
+
+            padding: 15px 18px;
+            margin-top: 15px;
+        }
+
+        .guesses-container p {
+            margin: 0;
+            font-size: 16px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .guess-dots {
+            display: flex;
+            gap: 7px;
+        }
+
+        .dot {
+            width: 14px;
+            height: 14px;
+
+            background-color: #2f80ed;
+            border-radius: 50%;
+        }
+
+        /* ANSWER CONTAINER */
+
+        .answer-container {
+            width: 100%;
+
+            background-color: #a7f5c1;
+            border-radius: 25px;
+
+            padding: 30px 25px;
+            margin-top: 55px;
+        }
+
+        #guess-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* INPUT */
+
+        #country-guess {
+            width: 100%;
+
+            padding: 15px 20px;
+
+            background-color: #e7edf5;
+            border: 2px solid #cccccc;
+            border-radius: 50px;
+
+            font-size: 16px;
+
+            outline: none;
+
+            box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+        }
+
+        #country-guess:focus {
+            border-color: #2f80ed;
+        }
+
+        /* SUBMIT BUTTON */
+
+        button {
+            width: 100%;
+
+            padding: 15px;
+
+            background-color: #2f80ed;
+            color: white;
+
+            border: none;
+            border-radius: 50px;
+
+            font-size: 22px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow: 0 4px 5px rgba(0,0,0,0.2);
+        }
+
+        button:hover {
+            background-color: #1769d2;
+        }
+
+        /* FEEDBACK */
+
+        #guess-feedback {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        /* MOBILE SCREENS */
+
+        @media (max-width: 430px) {
+
+            body {
+                background-color: #aed8fa;
+            }
+
+            .game-container {
+                max-width: 100%;
+                min-height: 100dvh;
+                padding: 15px 18px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .game-title {
+                font-size: 22px;
+                padding: 11px 30px;
+            }
+
+            .flag-section {
+                margin-top: 20px;
+                padding: 40px 0 25px;
+            }
+
+            .guesses-container {
+                padding: 12px 15px;
+            }
+
+            .guesses-container p {
+                font-size: 15px;
+            }
+
+            .dot {
+                width: 12px;
+                height: 12px;
+            }
+
+            .answer-container {
+                margin-top: 35px;
+                padding: 25px 20px;
+            }
+
+            button {
+                font-size: 20px;
+            }
+        }
+
+        /* SMALL IPHONES */
+
+        @media (max-width: 375px) {
+
+            .game-container {
+                padding: 12px 15px;
+            }
+
+            .flag-section {
+                padding: 25px 0 20px;
+            }
+
+            .guesses-container p {
+                font-size: 13px;
+            }
+
+            .guess-dots {
+                gap: 5px;
+            }
+
+            .dot {
+                width: 11px;
+                height: 11px;
+            }
+
+            .answer-container {
+                margin-top: 20px;
+                padding: 20px 15px;
+            }
+        }
+
+        @media (max-height: 750px) {
+
+            .flag-section {
+                margin-top: 10px;
+                padding-top: 20px;
+                padding-bottom: 15px;
+            }
+
+            .answer-container {
+                margin-top: 20px;
+            }
+        }
+
+    </style>
+
 </head>
 
 <body>
 
     <main class="game-container">
-        <a class="back" href="modes.html" aria-label="Back to Home">‹</a>
 
-        <!-- Game Title -->
+        <!-- BACK BUTTON -->
+        <a href="modes.html" class="back"
+           aria-label="Back to game modes">‹</a>
+
+        <!-- GAME TITLE -->
         <header>
             <h1>Flag It!</h1>
             <h2 class="game-title">Flag Reveal</h2>
         </header>
 
-        <!-- Flag Display -->
+        <!-- FLAG DISPLAY -->
         <section class="flag-section">
 
-            <div class="flag-box"></div>
+            <div class="flag-box">
+
+                <img
+                    src="images/el-salvador.png"
+                    alt="Partially hidden country flag"
+                    class="flag-image"
+                >
+
+                <div class="flag-cover"></div>
+
+            </div>
 
         </section>
 
-        <!-- Remaining Guesses -->
+      
         <section class="guesses-container">
 
             <p>
@@ -46,7 +394,6 @@
 
         </section>
 
-        <!-- Guess Input -->
         <section class="answer-container">
 
             <form id="guess-form">
@@ -54,9 +401,9 @@
                 <input
                     type="text"
                     id="country-guess"
-                    name="country"
                     placeholder="Type your answer..."
                     aria-label="Country guess"
+                    autocomplete="off"
                     required
                 >
 
@@ -70,11 +417,82 @@
 
         <p id="guess-feedback" aria-live="polite"></p>
 
-        <!-- Temporary navigation for Phase 3 -->
-        <a href="results.html" class="results-link">
-            View Results
-        </a>
-
     </main>
+
+    
+    <script>
+
+        let guessesLeft = 5;
+
+        const correctAnswer = "el salvador";
+
+        const guessForm =
+            document.getElementById("guess-form");
+
+        const countryInput =
+            document.getElementById("country-guess");
+
+        const guessesDisplay =
+            document.getElementById("guesses-left");
+
+        const feedback =
+            document.getElementById("guess-feedback");
+
+        const guessDots =
+            document.querySelectorAll(".dot");
+
+        guessForm.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            const answer =
+                countryInput.value.trim().toLowerCase();
+
+            // CORRECT ANSWER
+            if (answer === correctAnswer) {
+
+                sessionStorage.setItem(
+                    "flagRevealResult", "correct"
+                );
+
+                window.location.href = "results.html";
+
+                return;
+            }
+
+            // INCORRECT ANSWER
+            guessesLeft--;
+
+            guessesDisplay.textContent = guessesLeft;
+
+            // Turn one dot gray
+            if (guessDots[guessesLeft]) {
+                guessDots[guessesLeft].style.backgroundColor =
+                    "#cccccc";
+            }
+
+            feedback.textContent = "Incorrect! Try again.";
+            feedback.style.color = "#cc0000";
+
+            countryInput.value = "";
+
+            // NO GUESSES LEFT
+            if (guessesLeft === 0) {
+
+                sessionStorage.setItem(
+                    "flagRevealResult", "incorrect"
+                );
+
+                window.location.href = "results.html";
+
+                return;
+            }
+
+            countryInput.focus();
+
+        });
+
+    </script>
+
 </body>
 </html>
